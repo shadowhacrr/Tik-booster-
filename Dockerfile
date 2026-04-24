@@ -13,7 +13,7 @@ RUN npm config set registry https://npm.mirrors.msh.team \
     && npm config set strict-ssl false \
     && npm config set fund false \
     && npm config set audit false
-RUN --mount=type=cache,target=/root/.npm \
+RUN --mount=type=cache,id=npm-cache,target=/root/.npm \
     npm ci --prefer-offline --no-audit
 
 FROM deps AS build
